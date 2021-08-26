@@ -1,13 +1,11 @@
-using System;
-using System.Net;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient.Entities;
+using ObservabilityPlatform.GrafanaClient.Requests;
 using ObservabilityPlatform.GrafanaClient.Security;
+using Newtonsoft.Json;
+using ObservabilityPlatform.GrafanaClient.Helpers;
 
 namespace ObservabilityPlatform.GrafanaClient
 {
@@ -31,6 +29,15 @@ namespace ObservabilityPlatform.GrafanaClient
             var response = await _client.GetStringAsync($"{Api}/dashboards/home");
 
             return response;
+        }
+
+        public async Task<string> CreateDashboard(DashboardCreationRequest request)
+        {
+            var json = JsonHelper.Serialize(request);
+            var content = new StringContent(json);
+            var response = await _client.PostAsync($"{Api}/dashboards/db/", content);
+
+            return JsonHelper.Serialize(response);
         }
 
         public async Task<string> GetAllDataSources()
@@ -63,30 +70,34 @@ namespace ObservabilityPlatform.GrafanaClient
 
         public async Task<string> CreateDataSource(Datasource datasource)
         {
-            var response = await _client.PostAsJsonAsync($"{Api}/datasources/", datasource);
+            var json = JsonHelper.Serialize(datasource);
+            var content = new StringContent(json);
+            var response = await _client.PostAsync($"{Api}/datasources/", content);
 
-            return JsonSerializer.Serialize(response);
+            return JsonHelper.Serialize(response);
         }
 
         public async Task<string> CreateDataSourceWithBasicAuth(BasicDatasource datasource)
         {
-            var response = await _client.PostAsJsonAsync($"{Api}/datasources/", datasource);
+            var json = JsonHelper.Serialize(datasource);
+            var content = new StringContent(json);
+            var response = await _client.PostAsync($"{Api}/datasources/", content);
 
-            return JsonSerializer.Serialize(response);
+            return JsonHelper.Serialize(response);
         }
 
         public async Task<string> DeleteDataSource(uint id)
         {
             var response = await _client.DeleteAsync($"{Api}/datasources/{id}");
 
-            return JsonSerializer.Serialize(response);
+            return JsonConvert.SerializeObject(response);
         }
 
         public async Task<string> DeleteDataSource(string name)
         {
             var response = await _client.DeleteAsync($"{Api}/datasources/name/{name}");
 
-            return JsonSerializer.Serialize(response);
+            return JsonConvert.SerializeObject(response);
         }
 
         public async Task<string> GetDashboard(string uid)

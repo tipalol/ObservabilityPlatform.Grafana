@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using ObservabilityPlatform.GrafanaClient.Entities;
 using ObservabilityPlatform.GrafanaClient.IntegrationTests.Helpers;
+using ObservabilityPlatform.GrafanaClient.Requests;
 using Serilog;
 
 namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
@@ -66,6 +67,25 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
             var response = await _grafana.CreateDataSourceWithBasicAuth(datasource);
             
             _logger.Debug($"{nameof(CreateDataSourceWithBasicAuth)} " + response);
+            Assert.IsNotEmpty(response);
+        }
+
+        [Test]
+        public async Task CreateDashboard()
+        {
+            var dashboard = new Dashboard()
+            {
+                Title = "Rnd Man"
+            };
+
+            var creationRequest = new DashboardCreationRequest()
+            {
+                Dashboard = dashboard
+            };
+
+            var response = await _grafana.CreateDashboard(creationRequest);
+            
+            _logger.Debug($"{nameof(CreateDashboard)} " + response);
             Assert.IsNotEmpty(response);
         }
 
