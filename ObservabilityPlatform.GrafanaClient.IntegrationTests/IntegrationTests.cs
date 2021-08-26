@@ -1,11 +1,10 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
-using ObservabilityPlatform.GrafanaClient;
 using ObservabilityPlatform.GrafanaClient.Entities;
-using ObservabilityPlatform.GrafanaManager.IntegrationTests.Helpers;
+using ObservabilityPlatform.GrafanaClient.IntegrationTests.Helpers;
 using Serilog;
 
-namespace ObservabilityPlatform.GrafanaManager.IntegrationTests
+namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
 {
     public class Tests
     {

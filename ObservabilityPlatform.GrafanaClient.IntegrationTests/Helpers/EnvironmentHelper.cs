@@ -1,6 +1,6 @@
 using System;
 
-namespace ObservabilityPlatform.GrafanaManager.IntegrationTests.Helpers
+namespace ObservabilityPlatform.GrafanaClient.IntegrationTests.Helpers
 {
     public static class EnvironmentHelper
     {
