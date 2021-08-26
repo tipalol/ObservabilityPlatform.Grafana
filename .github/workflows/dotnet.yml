@@ -22,4 +22,8 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
+      env:
+        grafana_host: ${{secrets.GRAFANA_HOST}}
+        grafana_user: ${{secrets.GRAFANA_USER}}
+        grafana_password: ${{secrets.GRAFANA_PASSWORD}}
       run: dotnet test --no-build --verbosity normal
