@@ -75,6 +75,20 @@ namespace ObservabilityPlatform.GrafanaClient
             return JsonSerializer.Serialize(response);
         }
 
+        public async Task<string> DeleteDataSource(uint id)
+        {
+            var response = await _client.DeleteAsync($"{Api}/datasources/{id}");
+
+            return JsonSerializer.Serialize(response);
+        }
+
+        public async Task<string> DeleteDataSource(string name)
+        {
+            var response = await _client.DeleteAsync($"{Api}/datasources/name/{name}");
+
+            return JsonSerializer.Serialize(response);
+        }
+
         public async Task<string> GetDashboard(string uid)
         {
             var response = await _client.GetStringAsync($"{Api}/dashboards/uid/{uid}");
