@@ -1,5 +1,6 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
+using ObservabilityPlatform.GrafanaClient.Requests;
 
 namespace ObservabilityPlatform.GrafanaClient.Security
 {
@@ -20,6 +21,11 @@ namespace ObservabilityPlatform.GrafanaClient.Security
                 new AuthenticationHeaderValue(AuthenticationBodyPrefix, _token);
 
             return (client, host);
+        }
+
+        public (RequestSender client, string host) AuthenticateClientV2(RequestSender client, string host)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

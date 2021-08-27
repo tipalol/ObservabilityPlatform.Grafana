@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using ObservabilityPlatform.GrafanaClient.Requests;
 
 namespace ObservabilityPlatform.GrafanaClient.Security
 {
@@ -25,12 +26,21 @@ namespace ObservabilityPlatform.GrafanaClient.Security
             client.DefaultRequestHeaders.Authorization = 
                 new AuthenticationHeaderValue("Basic", tokenBase64);
             
-            client.DefaultRequestHeaders
+            /*client.DefaultRequestHeaders
                 .Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));*/
 
             client.BaseAddress = new Uri($"http://{host}/api");
             
+            return (client, host);
+        }
+
+        public (RequestSender client, string host) AuthenticateClientV2(RequestSender client, string host)
+        {
+            var token = $"{_login}:{_password}";
+
+            client = new RequestSender(host, token, "Basic");
+
             return (client, host);
         }
     }

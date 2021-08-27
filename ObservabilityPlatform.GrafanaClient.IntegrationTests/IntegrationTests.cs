@@ -115,7 +115,7 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         [Test]
         public async Task GetDataSource()
         {
-            const uint dataSourceId = 1;
+            const uint dataSourceId = 3;
             var response = await _grafana.GetDataSource(dataSourceId);
 
             _logger.Debug($"{nameof(GetDataSource)} " + response);
@@ -135,10 +135,10 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         [Test]
         public async Task GetDataSourceByUid()
         {
-            const string dataSourceUid = "qLK-DZV7k";
+            const string dataSourceUid = "48eUFZ4nk";
             var response = await _grafana.GetDataSourceByUid(dataSourceUid);
 
-            _logger.Debug($"{nameof(GetDashboardByUid)} " + response);
+            _logger.Debug($"{nameof(GetDataSourceByUid)} " + response);
             Assert.IsNotEmpty(response);
         }
         
@@ -147,15 +147,17 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         {
             const string dashboardUid = "DMFpWkVnz";
             var response = await _grafana.GetDashboard(dashboardUid);
-
-            _logger.Debug($"{nameof(GetDashboardByUid)} " + response);
-            Assert.IsNotEmpty(response);
+            
+            _logger.Information($"Dashboard id is {response.dashboard.id}, uid is {response.dashboard.uid}, title is {response.dashboard.title}");
+            _logger.Information($"{nameof(GetDashboardByUid)} " + response);
+            Assert.IsNotNull(response);
         }
 
+        [Ignore("Because")]
         [Test]
         public async Task DeleteDatasource()
         {
-            const uint datasourceId = 0;
+            const uint datasourceId = 1;
 
             var response = await _grafana.DeleteDataSource(datasourceId);
             
