@@ -1,11 +1,11 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ObservabilityPlatform.GrafanaClient.Entities
 {
     public class BasicDatasource : Datasource
     {
-        [JsonPropertyName("basicAuthUser")] public string BasicAuthUser { get; set; }
+        [JsonProperty(PropertyName = "basicAuthUser")] public string BasicAuthUser { get; set; }
         
-        [JsonPropertyName("secureJsonData")] public SecureJsonData SecureJsonData { get; set; }
+        [JsonProperty(PropertyName = "secureJsonData")] public SecureJsonData SecureJsonData { get; set; }
     }
 }

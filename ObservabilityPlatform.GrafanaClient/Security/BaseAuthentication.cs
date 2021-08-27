@@ -21,9 +21,16 @@ namespace ObservabilityPlatform.GrafanaClient.Security
             var token = $"{_login}:{_password}";
             var tokenBytes = Encoding.ASCII.GetBytes(token);
             var tokenBase64 = Convert.ToBase64String(tokenBytes);
+            
             client.DefaultRequestHeaders.Authorization = 
                 new AuthenticationHeaderValue("Basic", tokenBase64);
+            
+            client.DefaultRequestHeaders
+                .Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            client.BaseAddress = new Uri($"http://{host}/api");
+            
             return (client, host);
         }
     }

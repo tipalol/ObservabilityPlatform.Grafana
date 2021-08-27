@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using ObservabilityPlatform.GrafanaClient.Entities;
 using ObservabilityPlatform.GrafanaClient.IntegrationTests.Helpers;
@@ -63,6 +64,8 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
                     BasicAuthPassword = "user_password"
                 }
             };
+            
+            _logger.Information(JsonConvert.SerializeObject(datasource));
 
             var response = await _grafana.CreateDataSourceWithBasicAuth(datasource);
             
@@ -82,6 +85,8 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
             {
                 Dashboard = dashboard
             };
+            
+            _logger.Information(JsonConvert.SerializeObject(creationRequest));
 
             var response = await _grafana.CreateDashboard(creationRequest);
             
@@ -150,7 +155,7 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         [Test]
         public async Task DeleteDatasource()
         {
-            const uint datasourceId = 2;
+            const uint datasourceId = 0;
 
             var response = await _grafana.DeleteDataSource(datasourceId);
             

@@ -1,18 +1,19 @@
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using ObservabilityPlatform.GrafanaClient.Entities;
 
 namespace ObservabilityPlatform.GrafanaClient.Requests
 {
     public class DashboardCreationRequest
     {
-        [JsonPropertyName("dashboard")] public Dashboard Dashboard { get; set; }
+        [JsonProperty(PropertyName = "dashboard")] public Dashboard Dashboard { get; set; }
 
-        [JsonPropertyName("folderId")] public uint FolderId { get; set; } = 0;
-        
-        [JsonPropertyName("folderUid")] public string FolderUid { get; set; }
+        [JsonProperty(PropertyName = "folderId")] public uint FolderId { get; set; } = 0;
 
-        [JsonPropertyName("message")] public string Message { get; set; } = "Make changes in dashboard";
+        [JsonProperty(PropertyName = "folderUid")] public string FolderUid { get; set; } = "DMFpWkVnz";
 
-        [JsonPropertyName("overwrite")] public bool Overwrite { get; set; } = false;
+        [JsonProperty(PropertyName = "message")] public string Message { get; set; } = "Make changes in dashboard";
+
+        [JsonProperty(PropertyName = "overwrite")] public bool Overwrite { get; set; } = false;
     }
 }
