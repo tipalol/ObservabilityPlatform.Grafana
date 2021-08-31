@@ -5,6 +5,8 @@ using ObservabilityPlatform.GrafanaClient.Security;
 using Newtonsoft.Json;
 using ObservabilityPlatform.GrafanaClient.Helpers;
 using ObservabilityPlatform.GrafanaClient.Reponses;
+using ObservabilityPlatform.GrafanaClient.Responses;
+using Datasource = ObservabilityPlatform.GrafanaClient.Responses.Datasource;
 
 namespace ObservabilityPlatform.GrafanaClient
 {
@@ -47,9 +49,11 @@ namespace ObservabilityPlatform.GrafanaClient
             return response;
         }
 
-        public async Task<string> GetDataSource(string name)
+        public async Task<string> GetDataSource<T>(string name) where T : GetDatasourceResponse, new()
         {
             var response = await _sender.Get($"/datasources/name/{name}");
+
+            var datasource = JsonHelper.Deserialize<T>(response);
 
             return response;
         }

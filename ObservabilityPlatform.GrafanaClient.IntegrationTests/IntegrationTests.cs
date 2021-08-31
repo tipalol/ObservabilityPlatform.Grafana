@@ -2,9 +2,12 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using ObservabilityPlatform.GrafanaClient.Entities;
+using ObservabilityPlatform.GrafanaClient.Helpers;
 using ObservabilityPlatform.GrafanaClient.IntegrationTests.Helpers;
 using ObservabilityPlatform.GrafanaClient.Requests;
+using ObservabilityPlatform.GrafanaClient.Responses;
 using Serilog;
+using Datasource = ObservabilityPlatform.GrafanaClient.Responses.Datasource;
 
 namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
 {
@@ -125,10 +128,10 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         [Test]
         public async Task GetDataSourceByName()
         {
-            const string dataSourceName = "Test Datasource";
-            var response = await _grafana.GetDataSource(dataSourceName);
+            const string dataSourceName = "Hello";
+            var response = await _grafana.GetDataSource<GetElasticSourceResponse>(dataSourceName);
 
-            _logger.Debug($"{nameof(GetDataSourceByName)} " + response);
+            _logger.Debug($"{nameof(GetDataSourceByName)} " + JsonHelper.Serialize(response));
             Assert.IsNotEmpty(response);
         }
         
@@ -148,7 +151,11 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
             const string dashboardUid = "DMFpWkVnz";
             var response = await _grafana.GetDashboard(dashboardUid);
             
-            _logger.Information($"Dashboard id is {response.dashboard.id}, uid is {response.dashboard.uid}, title is {response.dashboard.title}");
+            _logger.Information($"" +
+                                $"Dashboard id is {response.dashboard.id}, " +
+                                $"uid is {response.dashboard.uid}, " +
+                                $"title is {response.dashboard.title}");
+            
             _logger.Information($"{nameof(GetDashboardByUid)} " + response);
             Assert.IsNotNull(response);
         }

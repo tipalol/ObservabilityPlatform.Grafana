@@ -37,7 +37,7 @@ namespace ObservabilityPlatform.GrafanaClient.Reponses
         {
             public int limit { get; set; }
             public bool matchAny { get; set; }
-            public List<string> tags { get; set; }
+            public List<Tag> tags { get; set; }
             public string type { get; set; }
         }
 
@@ -198,6 +198,12 @@ namespace ObservabilityPlatform.GrafanaClient.Reponses
         {
         }
 
+        public class Tag
+        {
+            public string term { get; set; }
+            public int count { get; set; }
+        }
+
         public class Dashboard
         {
             public Annotations annotations { get; set; }
@@ -209,7 +215,7 @@ namespace ObservabilityPlatform.GrafanaClient.Reponses
             public List<Panel> panels { get; set; }
             public int schemaVersion { get; set; }
             public string style { get; set; }
-            public List<object> tags { get; set; }
+            public List<Tag> tags { get; set; }
             public Templating templating { get; set; }
             public Time time { get; set; }
             public Timepicker timepicker { get; set; }
