@@ -7,7 +7,6 @@ using ObservabilityPlatform.GrafanaClient.IntegrationTests.Helpers;
 using ObservabilityPlatform.GrafanaClient.Requests;
 using ObservabilityPlatform.GrafanaClient.Responses;
 using Serilog;
-using Datasource = ObservabilityPlatform.GrafanaClient.Responses.Datasource;
 
 namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
 {
@@ -54,7 +53,7 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         [Test]
         public async Task CreateDataSourceWithBasicAuth()
         {
-            var datasource = new BasicDatasource()
+            var datasource = new Datasource()
             {
                 Name = "Test Datasource With Basic Auth",
                 Type = "graphite",
@@ -62,10 +61,7 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
                 Access = "proxy",
                 BasicAuth = true,
                 BasicAuthUser = "user_name",
-                SecureJsonData = new SecureJsonData()
-                {
-                    BasicAuthPassword = "user_password"
-                }
+                BasicAuthPassword = "user_password"
             };
             
             _logger.Information(JsonConvert.SerializeObject(datasource));
@@ -111,18 +107,18 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
         {
             var response = await _grafana.GetAllDataSources();
 
-            _logger.Debug($"{nameof(GetAllDataSources)} " + response);
+            _logger.Debug($"{nameof(GetAllDataSources)} " + JsonHelper.Serialize(response));
             Assert.IsNotEmpty(response);
         }
         
         [Test]
         public async Task GetDataSource()
         {
-            const uint dataSourceId = 3;
-            var response = await _grafana.GetDataSource(dataSourceId);
+            const uint dataSourceId = 5;
+            var response = await _grafana.GetDataSource<GetElasticSourceResponse>(dataSourceId);
 
-            _logger.Debug($"{nameof(GetDataSource)} " + response);
-            Assert.IsNotEmpty(response);
+            _logger.Debug($"{nameof(GetDataSource)} " + JsonHelper.Serialize(response));
+            Assert.IsNotEmpty(JsonHelper.Serialize(response));
         }
         
         [Test]
@@ -132,17 +128,17 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
             var response = await _grafana.GetDataSource<GetElasticSourceResponse>(dataSourceName);
 
             _logger.Debug($"{nameof(GetDataSourceByName)} " + JsonHelper.Serialize(response));
-            Assert.IsNotEmpty(response);
+            Assert.IsNotEmpty(JsonHelper.Serialize(response));
         }
         
         [Test]
         public async Task GetDataSourceByUid()
         {
-            const string dataSourceUid = "48eUFZ4nk";
-            var response = await _grafana.GetDataSourceByUid(dataSourceUid);
+            const string dataSourceUid = "9RkPn04nz";
+            var response = await _grafana.GetDataSourceByUid<GetElasticSourceResponse>(dataSourceUid);
 
-            _logger.Debug($"{nameof(GetDataSourceByUid)} " + response);
-            Assert.IsNotEmpty(response);
+            _logger.Debug($"{nameof(GetDataSourceByUid)} " + JsonHelper.Serialize(response));
+            Assert.IsNotEmpty(JsonHelper.Serialize(response));
         }
         
         [Test]

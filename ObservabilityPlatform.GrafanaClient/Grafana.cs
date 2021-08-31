@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using ObservabilityPlatform.GrafanaClient.Helpers;
 using ObservabilityPlatform.GrafanaClient.Reponses;
 using ObservabilityPlatform.GrafanaClient.Responses;
-using Datasource = ObservabilityPlatform.GrafanaClient.Responses.Datasource;
 
 namespace ObservabilityPlatform.GrafanaClient
 {
@@ -42,27 +41,31 @@ namespace ObservabilityPlatform.GrafanaClient
             return response;
         }
 
-        public async Task<string> GetDataSource(uint id)
+        public async Task<T> GetDataSource<T>(uint id) where T : GetDatasourceResponse, new()
         {
             var response = await _sender.Get($"/datasources/{id}");
+
+            var datasource = JsonHelper.Deserialize<T>(response);
             
-            return response;
+            return datasource;
         }
 
-        public async Task<string> GetDataSource<T>(string name) where T : GetDatasourceResponse, new()
+        public async Task<T> GetDataSource<T>(string name) where T : GetDatasourceResponse, new()
         {
             var response = await _sender.Get($"/datasources/name/{name}");
 
             var datasource = JsonHelper.Deserialize<T>(response);
 
-            return response;
+            return datasource;
         }
 
-        public async Task<string> GetDataSourceByUid(string uid)
+        public async Task<T> GetDataSourceByUid<T>(string uid) where T : GetDatasourceResponse, new()
         {
             var response = await _sender.Get($"/datasources/uid/{uid}");
 
-            return response;
+            var datasource = JsonHelper.Deserialize<T>(response);
+
+            return datasource;
         }
 
         public async Task<string> CreateDataSource(Datasource datasource)
@@ -73,7 +76,7 @@ namespace ObservabilityPlatform.GrafanaClient
             return JsonHelper.Serialize(response);
         }
 
-        public async Task<string> CreateDataSourceWithBasicAuth(BasicDatasource datasource)
+        public async Task<string> CreateDataSourceWithBasicAuth(Datasource datasource)
         {
             var json = JsonHelper.Serialize(datasource);
             var response = await _sender.Post($"/datasources", json);

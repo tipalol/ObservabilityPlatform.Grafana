@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using ObservabilityPlatform.GrafanaClient.Entities;
 
 namespace ObservabilityPlatform.GrafanaClient.Responses
 {
