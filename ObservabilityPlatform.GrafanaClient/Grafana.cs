@@ -76,12 +76,14 @@ namespace ObservabilityPlatform.GrafanaClient
             return JsonHelper.Serialize(response);
         }
 
-        public async Task<string> CreateDataSourceWithBasicAuth(Datasource datasource)
+        public async Task<PostDatasourceResponse> CreateDataSourceWithBasicAuth(Datasource datasource)
         {
             var json = JsonHelper.Serialize(datasource);
             var response = await _sender.Post($"/datasources", json);
 
-            return JsonHelper.Serialize(response);
+            var postSourceResponse = JsonHelper.Deserialize<PostDatasourceResponse>(response);
+
+            return postSourceResponse;
         }
 
         public async Task<string> DeleteDataSource(uint id)

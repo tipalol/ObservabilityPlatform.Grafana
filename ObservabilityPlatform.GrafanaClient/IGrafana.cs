@@ -13,7 +13,7 @@ namespace ObservabilityPlatform.GrafanaClient
         public Task<T> GetDataSourceByUid<T>(string uid) where T : GetDatasourceResponse, new();
         public Task<string> GetAllDataSources();
         public Task<string> CreateDataSource(Datasource datasource);
-        public Task<string> CreateDataSourceWithBasicAuth(Datasource datasource);
+        public Task<PostDatasourceResponse> CreateDataSourceWithBasicAuth(Datasource datasource);
         public Task<string> DeleteDataSource(uint id);
         public Task<string> DeleteDataSource(string name);
         public Task<GetDashboardResponse> GetDashboard(string uid);

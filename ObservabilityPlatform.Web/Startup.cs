@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using ObservabilityPlatform.Web.Data;
 using ObservabilityPlatform.Web.Services;
 using OpenTelemetry.Trace;
+using Serilog;
 
 namespace ObservabilityPlatform.Web
 {
@@ -42,7 +43,7 @@ namespace ObservabilityPlatform.Web
             );
 
             services.AddTransient<IGrafanaService, GrafanaService>();
-            
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();

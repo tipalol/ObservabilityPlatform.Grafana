@@ -68,8 +68,8 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
 
             var response = await _grafana.CreateDataSourceWithBasicAuth(datasource);
             
-            _logger.Debug($"{nameof(CreateDataSourceWithBasicAuth)} " + response);
-            Assert.IsNotEmpty(response);
+            _logger.Debug($"{nameof(CreateDataSourceWithBasicAuth)} " + JsonHelper.Serialize(response));
+            Assert.IsNotEmpty(JsonHelper.Serialize(response));
         }
 
         [Test]

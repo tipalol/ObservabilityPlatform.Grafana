@@ -76,3 +76,5 @@
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/bin/Debug/net5.0/System.Runtime.CompilerServices.Unsafe.dll
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/bin/Debug/net5.0/OpenTelemetry.Instrumentation.Http.dll
+/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/bin/Debug/net5.0/ObservabilityPlatform.GrafanaClient.dll
+/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/bin/Debug/net5.0/ObservabilityPlatform.GrafanaClient.pdb
