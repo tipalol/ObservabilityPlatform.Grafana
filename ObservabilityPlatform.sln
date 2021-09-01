@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservabilityPlatform.Grafa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservabilityPlatform.GrafanaClient.IntegrationTests", "ObservabilityPlatform.GrafanaClient.IntegrationTests\ObservabilityPlatform.GrafanaClient.IntegrationTests.csproj", "{00A2EC8D-34F0-46FB-8836-A8A2C4E010AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservabilityPlatform.Web", "ObservabilityPlatform.Web\ObservabilityPlatform.Web.csproj", "{A1028B1B-D343-4A61-99AE-551BD6882CEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{00A2EC8D-34F0-46FB-8836-A8A2C4E010AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A2EC8D-34F0-46FB-8836-A8A2C4E010AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A2EC8D-34F0-46FB-8836-A8A2C4E010AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

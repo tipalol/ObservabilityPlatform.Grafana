@@ -7,7 +7,7 @@ using ObservabilityPlatform.GrafanaClient.Helpers;
 
 namespace ObservabilityPlatform.GrafanaClient.Requests
 {
-    public class RequestSender
+    public class RequestSender : IDisposable
     {
         private readonly HttpClient _client = new();
         private readonly string _baseUri;
@@ -43,6 +43,12 @@ namespace ObservabilityPlatform.GrafanaClient.Requests
             var response = await _client.PostAsync($"{_baseUri}{request}", webContent);
 
             return JsonHelper.Serialize(response);
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+            _client?.Dispose();
         }
     }
 }

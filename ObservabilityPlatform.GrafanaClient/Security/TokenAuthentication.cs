@@ -1,5 +1,3 @@
-using System.Net.Http;
-using System.Net.Http.Headers;
 using ObservabilityPlatform.GrafanaClient.Requests;
 
 namespace ObservabilityPlatform.GrafanaClient.Security
@@ -15,15 +13,7 @@ namespace ObservabilityPlatform.GrafanaClient.Security
             _token = token;
         }
 
-        public (HttpClient client, string host) AuthenticateClient(HttpClient client, string host)
-        {
-            client.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue(AuthenticationBodyPrefix, _token);
-
-            return (client, host);
-        }
-
-        public (RequestSender client, string host) AuthenticateClientV2(RequestSender client, string host)
+        public (RequestSender client, string host) AuthenticateClientV2(string host)
         {
             throw new System.NotImplementedException();
         }

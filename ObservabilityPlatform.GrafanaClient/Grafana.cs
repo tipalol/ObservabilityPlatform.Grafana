@@ -15,7 +15,7 @@ namespace ObservabilityPlatform.GrafanaClient
 
         private Grafana(string host, IAuthentication authentication)
         {
-            var (sender, _) = authentication.AuthenticateClientV2(_sender, host);
+            var (sender, _) = authentication.AuthenticateClientV2(host);
             _sender = sender;
         }
 
