@@ -4,7 +4,7 @@ namespace ObservabilityPlatform.GrafanaClient.Security
 {
     internal class TokenAuthentication : IAuthentication
     {
-        private const string AuthenticationBodyPrefix = "Bearer ";
+        private const string AuthenticationBodyPrefix = "Bearer";
 
         private readonly string _token;
 
@@ -15,7 +15,9 @@ namespace ObservabilityPlatform.GrafanaClient.Security
 
         public (RequestSender client, string host) AuthenticateClientV2(string host)
         {
-            throw new System.NotImplementedException();
+            var client = new RequestSender(host, _token, AuthenticationBodyPrefix);
+
+            return (client, host);
         }
     }
 }

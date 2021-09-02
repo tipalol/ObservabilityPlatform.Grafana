@@ -1,0 +1,40 @@
+﻿@page "/datasourceCreator"
+@using System.IO
+@using System.Text
+@using ObservabilityPlatform.GrafanaClient.Entities
+@using ObservabilityPlatform.GrafanaClient.Helpers
+@using ObservabilityPlatform.Web.Services
+@inject IGrafanaService Grafana
+
+<div class="container">
+    <h1>Datasource Creator</h1>
+    <br>
+    <h3>Создание нового datasource из json файлов</h3>
+    <p>В открывшемся диалоге выбора файлов, выберите нужные для загрузки файлы. 
+        В одном файле должен содержаться один datasource</p>
+    <InputFile OnChange="@LoadFiles" multiple />
+    <br>
+    <p>Результаты: @_fileResponse</p>
+    <p>@_fileResponse</p>
+</div>
+
+@code {
+    private string _fileResponse = "Выберите файлы для загрузки";
+    
+    private async void LoadFiles(InputFileChangeEventArgs e)
+    {
+        var sb = new StringBuilder();
+        _fileResponse = string.Empty;
+        
+        foreach (var file in e.GetMultipleFiles())
+        {
+            var json = await new StreamReader(file.OpenReadStream()).ReadToEndAsync();
+            var datasource = JsonHelper.Deserialize<Datasource>(json);
+            var response = await Grafana.CreateDatasource(datasource);
+
+            sb.Append($"{response.Message}\n");
+        }
+        
+        _fileResponse = sb.ToString();
+    }
+}

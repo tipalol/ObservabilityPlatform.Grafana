@@ -12,15 +12,17 @@ namespace ObservabilityPlatform.Web.Services
 
         public GrafanaService()
         {
-            var (host, login, password) = EnvironmentHelper.GetSecrets();
+            //var (host, login, password) = EnvironmentHelper.GetSecrets();
 
             _grafana = new Grafana.Builder()
-                .ConnectTo(host)
-                .UseBaseAuthentication(login, password)
+                .ConnectTo("185.229.224.209:3000")
+                .UseBaseAuthentication("admin", "admin")
                 .Build();
+
+            _grafana.GetAllDataSources();
         }
 
-        public async Task<PostDatasourceResponse> CreateDatasource(Datasource datasource)
+        public async Task<PostDatasourceResult> CreateDatasource(Datasource datasource)
         {
             var response = await _grafana.CreateDataSourceWithBasicAuth(datasource);
 

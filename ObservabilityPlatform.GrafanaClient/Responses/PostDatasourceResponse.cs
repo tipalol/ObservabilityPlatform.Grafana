@@ -1,16 +1,16 @@
-using Newtonsoft.Json;
-using ObservabilityPlatform.GrafanaClient.Entities;
-
 namespace ObservabilityPlatform.GrafanaClient.Responses
 {
     public class PostDatasourceResponse
     {
-        [JsonProperty(PropertyName = "datasource")] public Datasource Datasource { get; set; }
-        
-        [JsonProperty(PropertyName = "id")] public int Id { get; set; }
-        
-        [JsonProperty(PropertyName = "message")] public string Message { get; set; }
-        
-        [JsonProperty(PropertyName = "name")] public string Name { get; set; }
+        public string Result { get; set; }
+        public int Id { get; set; }
+        public string Exception { get; set; }
+        public int Status { get; set; }
+        public bool IsCanceled { get; set; }
+        public bool IsCompleted { get; set; }
+        public bool IsCompletedSuccessfully { get; set; }
+        public int CreationOptions { get; set; }
+        public string AsyncState { get; set; }
+        public bool IsFaulted { get; set; }
     }
 }

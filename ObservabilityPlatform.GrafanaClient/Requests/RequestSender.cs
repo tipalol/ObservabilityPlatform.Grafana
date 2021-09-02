@@ -19,7 +19,7 @@ namespace ObservabilityPlatform.GrafanaClient.Requests
             
             _client.DefaultRequestHeaders.Authorization = 
                 new AuthenticationHeaderValue(tokenType, tokenBase64);
-            
+
             _baseUri = $"http://{host}/api";
         }
 
@@ -42,7 +42,7 @@ namespace ObservabilityPlatform.GrafanaClient.Requests
             var webContent = new StringContent(content, Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"{_baseUri}{request}", webContent);
 
-            return JsonHelper.Serialize(response);
+            return JsonHelper.Serialize(response.Content.ReadAsStringAsync());
         }
 
         public void Dispose()

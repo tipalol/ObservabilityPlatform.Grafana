@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient.Entities;
 using ObservabilityPlatform.GrafanaClient.Requests;
@@ -76,14 +78,16 @@ namespace ObservabilityPlatform.GrafanaClient
             return JsonHelper.Serialize(response);
         }
 
-        public async Task<PostDatasourceResponse> CreateDataSourceWithBasicAuth(Datasource datasource)
+        public async Task<PostDatasourceResult> CreateDataSourceWithBasicAuth(Datasource datasource)
         {
             var json = JsonHelper.Serialize(datasource);
             var response = await _sender.Post($"/datasources", json);
-
+            
+            await File.WriteAllTextAsync("info.txt", response);
             var postSourceResponse = JsonHelper.Deserialize<PostDatasourceResponse>(response);
+            var result = JsonHelper.Deserialize<PostDatasourceResult>(postSourceResponse.Result);
 
-            return postSourceResponse;
+            return result;
         }
 
         public async Task<string> DeleteDataSource(uint id)

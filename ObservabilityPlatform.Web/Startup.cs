@@ -42,7 +42,7 @@ namespace ObservabilityPlatform.Web
                     })
             );
 
-            services.AddTransient<IGrafanaService, GrafanaService>();
+            services.AddSingleton<IGrafanaService, GrafanaService>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
