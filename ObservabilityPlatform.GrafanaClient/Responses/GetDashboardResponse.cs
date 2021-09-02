@@ -1,229 +1,77 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using ObservabilityPlatform.GrafanaClient.Serialization;
 
-namespace ObservabilityPlatform.GrafanaClient.Reponses
+namespace ObservabilityPlatform.GrafanaClient.Responses
 {
     public class GetDashboardResponse
     {
-        public Meta meta { get; set; }
-        public Dashboard dashboard { get; set; }
-        
-        public class Meta
-        {
-            public string type { get; set; }
-            public bool canSave { get; set; }
-            public bool canEdit { get; set; }
-            public bool canAdmin { get; set; }
-            public bool canStar { get; set; }
-            public string slug { get; set; }
-            public string url { get; set; }
-            public DateTime expires { get; set; }
-            public DateTime created { get; set; }
-            public DateTime updated { get; set; }
-            public string updatedBy { get; set; }
-            public string createdBy { get; set; }
-            public int version { get; set; }
-            public bool hasAcl { get; set; }
-            public bool isFolder { get; set; }
-            public int folderId { get; set; }
-            public string folderUid { get; set; }
-            public string folderTitle { get; set; }
-            public string folderUrl { get; set; }
-            public bool provisioned { get; set; }
-            public string provisionedExternalId { get; set; }
-        }
-
-        public class Target
-        {
-            public int limit { get; set; }
-            public bool matchAny { get; set; }
-            public List<Tag> tags { get; set; }
-            public string type { get; set; }
-        }
-
-        public class List
-        {
-            public int builtIn { get; set; }
-            public string datasource { get; set; }
-            public bool enable { get; set; }
-            public bool hide { get; set; }
-            public string iconColor { get; set; }
-            public string name { get; set; }
-            public Target target { get; set; }
-            public string type { get; set; }
-        }
-
-        public class Annotations
-        {
-            public List<List> list { get; set; }
-        }
-
-        public class Color
-        {
-            public string mode { get; set; }
-        }
-
-        public class HideFrom
-        {
-            public bool legend { get; set; }
-            public bool tooltip { get; set; }
-            public bool viz { get; set; }
-        }
-
-        public class ScaleDistribution
-        {
-            public string type { get; set; }
-        }
-
-        public class Stacking
-        {
-            public string group { get; set; }
-            public string mode { get; set; }
-        }
-
-        public class ThresholdsStyle
-        {
-            public string mode { get; set; }
-        }
-
-        public class Custom
-        {
-            public string axisLabel { get; set; }
-            public string axisPlacement { get; set; }
-            public int barAlignment { get; set; }
-            public string drawStyle { get; set; }
-            public int fillOpacity { get; set; }
-            public string gradientMode { get; set; }
-            public HideFrom hideFrom { get; set; }
-            public string lineInterpolation { get; set; }
-            public int lineWidth { get; set; }
-            public int pointSize { get; set; }
-            public ScaleDistribution scaleDistribution { get; set; }
-            public string showPoints { get; set; }
-            public bool spanNulls { get; set; }
-            public Stacking stacking { get; set; }
-            public ThresholdsStyle thresholdsStyle { get; set; }
-        }
-
-        public class Step
-        {
-            public string color { get; set; }
-            public int? value { get; set; }
-        }
-
-        public class Thresholds
-        {
-            public string mode { get; set; }
-            public List<Step> steps { get; set; }
-        }
-
-        public class Defaults
-        {
-            public Color color { get; set; }
-            public Custom custom { get; set; }
-            public List<object> mappings { get; set; }
-            public Thresholds thresholds { get; set; }
-        }
-
-        public class FieldConfig
-        {
-            public Defaults defaults { get; set; }
-            public List<object> overrides { get; set; }
-        }
-
-        public class GridPos
-        {
-            public int h { get; set; }
-            public int w { get; set; }
-            public int x { get; set; }
-            public int y { get; set; }
-        }
-
-        public class Legend
-        {
-            public List<object> calcs { get; set; }
-            public string displayMode { get; set; }
-            public string placement { get; set; }
-        }
-
-        public class Tooltip
-        {
-            public string mode { get; set; }
-        }
-
-        public class Options
-        {
-            public Legend legend { get; set; }
-            public Tooltip tooltip { get; set; }
-        }
-
-        public class Filter
-        {
-            public List<string> fields { get; set; }
-        }
-
-        public class Target2
-        {
-            public string queryType { get; set; }
-            public string refId { get; set; }
-            public string target { get; set; }
-            public string channel { get; set; }
-            public Filter filter { get; set; }
-        }
-
-        public class Panel
-        {
-            public string datasource { get; set; }
-            public FieldConfig fieldConfig { get; set; }
-            public GridPos gridPos { get; set; }
-            public int id { get; set; }
-            public Options options { get; set; }
-            public List<Target> targets { get; set; }
-            public string title { get; set; }
-            public string type { get; set; }
-        }
-
-        public class Templating
-        {
-            public List<object> list { get; set; }
-        }
-
-        public class Time
-        {
-            public string from { get; set; }
-            public string to { get; set; }
-        }
-
-        public class Timepicker
-        {
-        }
-
-        public class Tag
-        {
-            public string term { get; set; }
-            public int count { get; set; }
-        }
+        [JsonProperty(PropertyName = "meta")] public Meta MetaInfo { get; set; }
+        [JsonProperty(PropertyName = "dashboard")] public Dashboard DashboardWow { get; set; }
 
         public class Dashboard
         {
-            public Annotations annotations { get; set; }
-            public bool editable { get; set; }
-            public object gnetId { get; set; }
-            public int graphTooltip { get; set; }
-            public int id { get; set; }
-            public List<object> links { get; set; }
-            public List<Panel> panels { get; set; }
-            public int schemaVersion { get; set; }
-            public string style { get; set; }
-            public List<Tag> tags { get; set; }
-            public Templating templating { get; set; }
-            public Time time { get; set; }
-            public Timepicker timepicker { get; set; }
-            public string timezone { get; set; }
-            public string title { get; set; }
-            public string uid { get; set; }
-            public int version { get; set; }
+            [JsonProperty(PropertyName = "annotations")] public Annotations AnnotationList { get; set; }
+            [JsonProperty(PropertyName = "editable")] public bool Editable { get; set; }
+            [JsonProperty(PropertyName = "gnetId")] public object GNetId { get; set; }
+            [JsonProperty(PropertyName = "graphTooltip")] public int GraphTooltip { get; set; }
+            [JsonProperty(PropertyName = "hideControls")] public bool HideControls { get; set; }
+            [JsonConverter(typeof(JsonZeroToNullConverter))]
+            [JsonProperty(PropertyName = "id")] public int Id { get; set; }
+            [JsonProperty(PropertyName = "links")] public List<object> Links { get; set; }
+            [JsonProperty(PropertyName = "panels")] public List<object> Panels { get; set; }
+            [JsonProperty(PropertyName = "schemaVersion")] public uint SchemaVersion { get; set; }
+            [JsonProperty(PropertyName = "style")] public string Style { get; set; }
+            [JsonProperty(PropertyName = "tags")] public string[] Tags { get; set; }
+            [JsonProperty(PropertyName = "templating")] public object Templating { get; set; }
+            [JsonProperty(PropertyName = "time")] public object Time { get; set; }
+            [JsonProperty(PropertyName = "timepicker")] public object Timepicker { get; set; }
+            [JsonProperty(PropertyName = "timezone")] public string Timezone { get; set; }
+            [JsonProperty(PropertyName = "uid")] public string Uid { get; set; }
+            [JsonProperty(PropertyName = "title")] public string Title { get; set; }
+            [JsonProperty(PropertyName = "version")] public uint Version { get; set; }
+            [JsonProperty(PropertyName = "refresh")] public string Refresh { get; set; }
+
+            public class Annotations
+            {
+                [JsonProperty(PropertyName = "list")] public List<Annotation> AnnotationsList { get; set; }
+            }
+
+            public class Annotation
+            {
+                [JsonProperty(PropertyName = "builtIn")] public int BuiltIn { get; set; }
+                [JsonProperty(PropertyName = "datasource")] public string Datasource { get; set; }
+                [JsonProperty(PropertyName = "enable")] public bool Enable { get; set; }
+                [JsonProperty(PropertyName = "hide")] public bool Hide { get; set; }
+                [JsonProperty(PropertyName = "iconColor")] public string IconColor { get; set; }
+                [JsonProperty(PropertyName = "name")] public string Name { get; set; }
+                [JsonProperty(PropertyName = "type")] public string Type { get; set; }
+            }
         }
         
+        public class Meta
+        {
+            [JsonProperty(PropertyName = "type")] public string Type { get; set; }
+            [JsonProperty(PropertyName = "canSave")] public bool CanSave { get; set; }
+            [JsonProperty(PropertyName = "canEdit")] public bool CanEdit { get; set; }
+            [JsonProperty(PropertyName = "canAdmin")] public bool CanAdmin { get; set; }
+            [JsonProperty(PropertyName = "canStar")] public bool CanStar { get; set; }
+            [JsonProperty(PropertyName = "slug")] public string Slug { get; set; }
+            [JsonProperty(PropertyName = "url")] public string Url { get; set; }
+            [JsonProperty(PropertyName = "expires")] public DateTime Expires { get; set; }
+            [JsonProperty(PropertyName = "created")] public DateTime Created { get; set; }
+            [JsonProperty(PropertyName = "updated")] public DateTime Updated { get; set; }
+            [JsonProperty(PropertyName = "updatedBy")] public string UpdatedBy { get; set; }
+            [JsonProperty(PropertyName = "createdBy")] public string CreatedBy { get; set; }
+            [JsonProperty(PropertyName = "version")] public int Version { get; set; }
+            [JsonProperty(PropertyName = "hasAcl")] public bool HasAcl { get; set; }
+            [JsonProperty(PropertyName = "isFolder")] public bool IsFolder { get; set; }
+            [JsonProperty(PropertyName = "folderId")] public int FolderId { get; set; }
+            [JsonProperty(PropertyName = "folderTitle")] public string FolderTitle { get; set; }
+            [JsonProperty(PropertyName = "folderUrl")] public string FolderUrl { get; set; }
+            [JsonProperty(PropertyName = "provisioned")] public bool Provisioned { get; set; }
+            [JsonProperty(PropertyName = "provisionedExternalId")] public string ProvisionedExternalId { get; set; }
+        }
     }
 }

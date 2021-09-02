@@ -90,7 +90,7 @@ using ObservabilityPlatform.Web.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/Shared/NavMenu.razor"
+#line 38 "/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
