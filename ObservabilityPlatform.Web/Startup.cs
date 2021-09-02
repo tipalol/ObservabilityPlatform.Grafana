@@ -43,6 +43,7 @@ namespace ObservabilityPlatform.Web
             );
 
             services.AddSingleton<IGrafanaService, GrafanaService>();
+            services.AddSingleton<IRegisterClientService, RegisterClientService>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
