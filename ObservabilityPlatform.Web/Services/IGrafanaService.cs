@@ -8,7 +8,7 @@ namespace ObservabilityPlatform.Web.Services
     public interface IGrafanaService
     {
         public Task<PostDatasourceResult> CreateDatasource(Datasource datasource);
-        public Task<PostDashboardResponse> CreateDashboard(Dashboard dashboard);
+        public Task<string> CreateDashboardWithoutValidation(string dashboard);
         public Task<List<Datasource>> GetAllDatasources();
         public Task<GetDashboardResponse> GetDashboard(string uid);
     }

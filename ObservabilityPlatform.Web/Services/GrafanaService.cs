@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient;
 using ObservabilityPlatform.GrafanaClient.Entities;
+using ObservabilityPlatform.GrafanaClient.Helpers;
 using ObservabilityPlatform.GrafanaClient.Responses;
 using ObservabilityPlatform.Web.Helpers;
 
@@ -30,9 +31,11 @@ namespace ObservabilityPlatform.Web.Services
             return response;
         }
 
-        public Task<PostDashboardResponse> CreateDashboard(Dashboard dashboard)
+        public async Task<string> CreateDashboardWithoutValidation(string dashboard)
         {
-            throw new System.NotImplementedException();
+            var response = await _grafana.CreateDashboardWithoutValidation(dashboard);
+
+            return response;
         }
 
         public async Task<List<Datasource>> GetAllDatasources()

@@ -32,7 +32,14 @@ namespace ObservabilityPlatform.GrafanaClient
             var json = JsonHelper.Serialize(request);
             var response = await _sender.Post($"/dashboards/db", json);
 
-            return JsonHelper.Serialize(response);
+            return response;
+        }
+
+        public async Task<string> CreateDashboardWithoutValidation(string request)
+        {
+            var response = await _sender.Post($"/dashboards/db", request);
+
+            return response;
         }
 
         public async Task<List<Datasource>> GetAllDataSources()

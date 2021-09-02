@@ -78,3 +78,5 @@
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/Datasources.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Pages/Dashboards.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/Dashboards.razor.g.cs
+/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Pages/DashboardCreator.razor.g.cs
+/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/DashboardCreator.razor.g.cs

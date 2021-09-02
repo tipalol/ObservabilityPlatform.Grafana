@@ -19,5 +19,6 @@ namespace ObservabilityPlatform.GrafanaClient
         public Task<GetDashboardResponse> GetDashboard(string uid);
         public Task<string> GetHomeDashboardAsync();
         public Task<string> CreateDashboard(DashboardCreationRequest request);
+        public Task<string> CreateDashboardWithoutValidation(string request);
     }
 }
