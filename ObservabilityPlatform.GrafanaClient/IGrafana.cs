@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient.Entities;
-using ObservabilityPlatform.GrafanaClient.Reponses;
-using ObservabilityPlatform.GrafanaClient.Requests;
 using ObservabilityPlatform.GrafanaClient.Responses;
+using ObservabilityPlatform.GrafanaClient.Requests;
 
 namespace ObservabilityPlatform.GrafanaClient
 {

@@ -148,9 +148,9 @@ namespace ObservabilityPlatform.GrafanaClient.IntegrationTests
             var response = await _grafana.GetDashboard(dashboardUid);
             
             _logger.Information($"" +
-                                $"Dashboard id is {response.dashboard.id}, " +
-                                $"uid is {response.dashboard.uid}, " +
-                                $"title is {response.dashboard.title}");
+                                $"Dashboard id is {response.DashboardWow.Id}, " +
+                                $"uid is {response.DashboardWow.Uid}, " +
+                                $"title is {response.DashboardWow.Title}");
             
             _logger.Information($"{nameof(GetDashboardByUid)} " + response);
             Assert.IsNotNull(response);

@@ -10,5 +10,6 @@ namespace ObservabilityPlatform.Web.Services
         public Task<PostDatasourceResult> CreateDatasource(Datasource datasource);
         public Task<PostDashboardResponse> CreateDashboard(Dashboard dashboard);
         public Task<List<Datasource>> GetAllDatasources();
+        public Task<GetDashboardResponse> GetDashboard(string uid);
     }
 }

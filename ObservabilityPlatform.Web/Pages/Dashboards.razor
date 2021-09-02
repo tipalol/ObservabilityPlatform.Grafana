@@ -1,0 +1,52 @@
+@page "/dashboards"
+
+@using ObservabilityPlatform.Web.Services
+@using ObservabilityPlatform.GrafanaClient.Entities
+@using ObservabilityPlatform.GrafanaClient.Responses
+@inject IGrafanaService Grafana
+
+<h1>Dashboards</h1>
+
+<p>Ниже представлены все дашборды в Grafana</p>
+
+@if (_dashboard == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Uid</th>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@_dashboard.Id</td>
+            <td>@_dashboard.Uid</td>
+            <td>@_dashboard.Title</td>
+            <td>@_response.MetaInfo.Url</td>
+            <td>@_response.MetaInfo.Created.ToString("d")</td>
+        </tr>
+        </tbody>
+    </table>
+}
+
+@code {
+    private GetDashboardResponse.Dashboard _dashboard;
+    private GetDashboardResponse _response;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _response = await Grafana.GetDashboard("nQjAo4V7z");
+        _dashboard = _response.DashboardWow;
+    }
+
+}

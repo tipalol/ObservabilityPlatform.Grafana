@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient.Entities;
@@ -7,7 +6,6 @@ using ObservabilityPlatform.GrafanaClient.Requests;
 using ObservabilityPlatform.GrafanaClient.Security;
 using Newtonsoft.Json;
 using ObservabilityPlatform.GrafanaClient.Helpers;
-using ObservabilityPlatform.GrafanaClient.Reponses;
 using ObservabilityPlatform.GrafanaClient.Responses;
 
 namespace ObservabilityPlatform.GrafanaClient

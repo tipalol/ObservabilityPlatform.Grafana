@@ -41,5 +41,12 @@ namespace ObservabilityPlatform.Web.Services
 
             return datasources;
         }
+
+        public async Task<GetDashboardResponse> GetDashboard(string uid)
+        {
+            var response = await _grafana.GetDashboard(uid);
+
+            return response;
+        }
     }
 }
