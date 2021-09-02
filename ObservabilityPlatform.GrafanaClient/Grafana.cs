@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -36,11 +37,12 @@ namespace ObservabilityPlatform.GrafanaClient
             return JsonHelper.Serialize(response);
         }
 
-        public async Task<string> GetAllDataSources()
+        public async Task<List<Datasource>> GetAllDataSources()
         {
             var response = await _sender.Get($"/datasources");
+            var datasources = JsonHelper.Deserialize<List<Datasource>>(response);
 
-            return response;
+            return datasources;
         }
 
         public async Task<T> GetDataSource<T>(uint id) where T : GetDatasourceResponse, new()

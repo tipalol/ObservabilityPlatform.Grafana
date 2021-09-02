@@ -17,7 +17,6 @@
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/ObservabilityPlatform.Web.MvcApplicationPartsAssemblyInfo.cache
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/ObservabilityPlatform.Web.RazorComponent.input.cache
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs
-/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Pages/FetchData.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs
@@ -28,7 +27,6 @@
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/ObservabilityPlatform.Web.TagHelpers.output.cache
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/ObservabilityPlatform.Web.RazorCoreGenerate.cache
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/App.razor.g.cs
-/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/FetchData.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/_Imports.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs
@@ -76,3 +74,5 @@
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/bin/Debug/net5.0/ObservabilityPlatform.GrafanaClient.pdb
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Pages/DatasourceCreator.razor.g.cs
 /Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/DatasourceCreator.razor.g.cs
+/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/RazorDeclaration/Pages/Datasources.razor.g.cs
+/Users/sorokindmitrij/26.08.2021/ObservabilityPlatform/ObservabilityPlatform.Web/obj/Debug/net5.0/Razor/Pages/Datasources.razor.g.cs

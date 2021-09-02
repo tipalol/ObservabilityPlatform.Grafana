@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient;
 using ObservabilityPlatform.GrafanaClient.Entities;
@@ -32,6 +33,13 @@ namespace ObservabilityPlatform.Web.Services
         public Task<PostDashboardResponse> CreateDashboard(Dashboard dashboard)
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task<List<Datasource>> GetAllDatasources()
+        {
+            var datasources = await _grafana.GetAllDataSources();
+
+            return datasources;
         }
     }
 }

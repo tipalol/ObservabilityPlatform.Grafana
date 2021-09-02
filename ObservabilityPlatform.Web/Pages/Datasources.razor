@@ -1,0 +1,52 @@
+﻿@page "/datasources"
+
+@using ObservabilityPlatform.Web.Services
+@using ObservabilityPlatform.GrafanaClient.Entities
+@inject IGrafanaService Grafana
+
+<h1>Datasources</h1>
+
+<p>Ниже представлены все datasources в Grafana</p>
+
+@if (_datasources == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Uid</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Url</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var datasource in _datasources)
+        {
+            <tr>
+                <td>@datasource.Id</td>
+                <td>@datasource.Uid</td>
+                <td>@datasource.Name</td>
+                <td>@datasource.Type</td>
+                <td>@datasource.Url</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Datasource> _datasources;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _datasources = await Grafana.GetAllDatasources();
+    }
+
+}
