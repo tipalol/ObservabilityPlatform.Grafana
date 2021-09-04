@@ -1,7 +1,9 @@
 @page "/dashboardCreator"
 @using System.IO
 @using System.Text
+@using ObservabilityPlatform.Web.Builders
 @using ObservabilityPlatform.Web.Services
+@using ObservabilityPlatform.Web.Templates
 @inject IGrafanaService Grafana
 
 <div class="container">
@@ -33,5 +35,41 @@
         }
         
         _fileResponse = sb.ToString();
+    }
+}
+
+<div class="container">
+    <br>
+    <h3>Создание нового dashboard из шаблона</h3>
+    <p>Укажите нужные параметры в полях ниже и нажмите кнопку Создать</p>
+    <label for="dashboardTitleInput" class="form-label">Название дашборда</label>
+    <input @bind="_dashboardTitle" type="text" class="form-control" id="dashboardTitleInput">
+    <label for="zabbixDatasourceInput" class="form-label">Zabbix Datasource</label>
+    <input @bind="_zabbixDatasource" type="text" class="form-control" id="zabbixDatasourceInput">
+    <label for="applicationGroupInput" class="form-label">Группа приложений</label>
+    <input @bind="_applicationGroup" type="text" class="form-control" id="applicationGroupInput">
+    <button @onclick="CreateDashboardFromTemplate">Создать дашборд</button>
+</div>
+
+@code
+{
+    private string _dashboardTitle;
+    private string _zabbixDatasource;
+    private string _applicationGroup;
+
+    private async Task<string> CreateDashboardFromTemplate()
+    {
+        var template = DashboardTemplates.DashboardTemplate;
+        var builder = new DashboardBuilder(template);
+
+        var dashboard = builder
+            .SetTitle(_dashboardTitle)
+            .SetZabbixDatasource(_zabbixDatasource)
+            .SetApplicationGroup(_applicationGroup)
+            .Build();
+
+        var response = await Grafana.CreateDashboardWithoutValidation(dashboard);
+
+        return response;
     }
 }

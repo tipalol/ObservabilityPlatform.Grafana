@@ -22,4 +22,22 @@
       <ProjectReference Include="..\ObservabilityPlatform.GrafanaClient\ObservabilityPlatform.GrafanaClient.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Templates\DashboardTemplates.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>DashboardTemplates.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Templates\DashboardTemplates.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>dashboardTemplates.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Templates\DashboardTemplates.Designer.cs">
+        <DependentUpon>DashboardTemplates.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

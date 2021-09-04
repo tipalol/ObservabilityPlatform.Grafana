@@ -25,6 +25,7 @@ else
             <th>Title</th>
             <th>Url</th>
             <th>Created</th>
+            <th>Updated</th>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@ else
             <td>@_dashboard.Title</td>
             <td>@_response.MetaInfo.Url</td>
             <td>@_response.MetaInfo.Created.ToString("d")</td>
+            <td>@_response.MetaInfo.Updated.ToString("d")</td>
         </tr>
         </tbody>
     </table>
