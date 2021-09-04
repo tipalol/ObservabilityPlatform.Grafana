@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ObservabilityPlatform.GrafanaClient;
 using ObservabilityPlatform.GrafanaClient.Entities;
-using ObservabilityPlatform.GrafanaClient.Helpers;
 using ObservabilityPlatform.GrafanaClient.Responses;
 using ObservabilityPlatform.Web.Helpers;
 
@@ -14,11 +13,11 @@ namespace ObservabilityPlatform.Web.Services
 
         public GrafanaService()
         {
-            //var (host, login, password) = EnvironmentHelper.GetSecrets();
+            var (host, login, password) = EnvironmentHelper.GetSecrets();
 
             _grafana = new Grafana.Builder()
-                .ConnectTo("185.229.224.209:3000")
-                .UseBaseAuthentication("admin", "admin")
+                .ConnectTo(host)
+                .UseBaseAuthentication(login, password)
                 .Build();
 
             _grafana.GetAllDataSources();
