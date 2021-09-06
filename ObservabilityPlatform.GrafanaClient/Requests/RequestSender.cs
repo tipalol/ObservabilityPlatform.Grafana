@@ -20,7 +20,7 @@ namespace ObservabilityPlatform.GrafanaClient.Requests
             _client.DefaultRequestHeaders.Authorization = 
                 new AuthenticationHeaderValue(tokenType, tokenBase64);
 
-            _baseUri = $"http://{host}/api";
+            _baseUri = $"https://{host}/api";
         }
 
         public async Task<string> Get(string request)
