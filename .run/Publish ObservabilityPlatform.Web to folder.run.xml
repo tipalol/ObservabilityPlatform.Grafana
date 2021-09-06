@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Publish ObservabilityPlatform.Web to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+    <riderPublish runtime="Portable" target_folder="$USER_HOME$/Documents/Grafana Builds" target_framework="net5.0" uuid_high="-6844755532024952223" uuid_low="-7372861961907196690" />
+    <method v="2" />
+  </configuration>
+</component>

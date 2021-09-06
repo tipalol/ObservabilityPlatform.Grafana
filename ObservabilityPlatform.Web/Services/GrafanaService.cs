@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using ObservabilityPlatform.GrafanaClient;
 using ObservabilityPlatform.GrafanaClient.Entities;
 using ObservabilityPlatform.GrafanaClient.Responses;
@@ -11,16 +12,26 @@ namespace ObservabilityPlatform.Web.Services
     {
         private readonly IGrafana _grafana;
 
-        public GrafanaService()
+        public GrafanaService(IConfiguration configuration)
         {
-            var (host, login, password) = EnvironmentHelper.GetSecrets();
+            if (configuration["UseTokenAuthentication"] == "true")
+            {
+                var (host, token) = EnvironmentHelper.GetBearerSecrets();
+                
+                _grafana = new Grafana.Builder()
+                    .ConnectTo(host)
+                    .UseTokenAuthentication(token)
+                    .Build();
+            }
+            else
+            {
+                var (host, login, password) = EnvironmentHelper.GetBasicSecrets();
 
-            _grafana = new Grafana.Builder()
-                .ConnectTo(host)
-                .UseBaseAuthentication(login, password)
-                .Build();
-
-            _grafana.GetAllDataSources();
+                _grafana = new Grafana.Builder()
+                    .ConnectTo(host)
+                    .UseBaseAuthentication(login, password)
+                    .Build();
+            }
         }
 
         public async Task<PostDatasourceResult> CreateDatasource(Datasource datasource)
