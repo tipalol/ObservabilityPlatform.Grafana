@@ -14,11 +14,8 @@ namespace ObservabilityPlatform.GrafanaClient.Requests
 
         public RequestSender(string host, string token, string tokenType)
         {
-            var tokenBytes = Encoding.ASCII.GetBytes(token);
-            var tokenBase64 = Convert.ToBase64String(tokenBytes);
-            
             _client.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue(tokenType, tokenBase64);
+                new AuthenticationHeaderValue(tokenType, token);
 
             _baseUri = $"https://{host}/api";
         }

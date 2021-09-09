@@ -20,8 +20,11 @@ namespace ObservabilityPlatform.GrafanaClient.Security
         public (RequestSender client, string host) AuthenticateClientV2(string host)
         {
             var token = $"{_login}:{_password}";
+            
+            var tokenBytes = Encoding.ASCII.GetBytes(token);
+            var tokenBase64 = Convert.ToBase64String(tokenBytes);
 
-            var client = new RequestSender(host, token, "Basic");
+            var client = new RequestSender(host, tokenBase64, "Basic");
 
             return (client, host);
         }

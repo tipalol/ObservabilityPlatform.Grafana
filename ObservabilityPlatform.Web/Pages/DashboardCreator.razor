@@ -44,8 +44,6 @@
     <p>Укажите нужные параметры в полях ниже и нажмите кнопку Создать</p>
     <label for="dashboardTitleInput" class="form-label">Название дашборда</label>
     <input @bind="_dashboardTitle" type="text" class="form-control" id="dashboardTitleInput">
-    <label for="zabbixDatasourceInput" class="form-label">Zabbix Datasource</label>
-    <input @bind="_zabbixDatasource" type="text" class="form-control" id="zabbixDatasourceInput">
     <label for="applicationGroupInput" class="form-label">Группа приложений</label>
     <input @bind="_applicationGroup" type="text" class="form-control" id="applicationGroupInput">
     <button @onclick="CreateDashboardFromTemplate">Создать дашборд</button>
@@ -54,7 +52,6 @@
 @code
 {
     private string _dashboardTitle;
-    private string _zabbixDatasource;
     private string _applicationGroup;
 
     private async Task<string> CreateDashboardFromTemplate()
@@ -64,7 +61,6 @@
 
         var dashboard = builder
             .SetTitle(_dashboardTitle)
-            .SetZabbixDatasource(_zabbixDatasource)
             .SetApplicationGroup(_applicationGroup)
             .Build();
 
