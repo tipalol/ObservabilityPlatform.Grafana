@@ -18,8 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="DashboardTemplate" xml:space="preserve">
-        <value>{
+  <data name="DashboardTemplate" xml:space="preserve">
+    <value>{
   "annotations": {
     "list": [
       {
@@ -36,7 +36,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 394,
+  "id": null,
   "iteration": 1631195789066,
   "links": [],
   "panels": [
@@ -4865,10 +4865,10 @@
           "selected": true,
           "tags": [],
           "text": [
-            [application-group]
+            "[application-group]"
           ],
           "value": [
-            [application-group]
+            "[application-group]"
           ]
         },
         "description": null,
@@ -4878,7 +4878,7 @@
         "label": "APP",
         "multi": true,
         "name": "APP",
-        "query": [application-group],
+        "query": "[application-group]",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -4929,9 +4929,9 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": [dashboard-title],
+  "title": "[dashboard-title]",
   "uid": null,
   "version": 15
 }</value>
-    </data>
+  </data>
 </root>

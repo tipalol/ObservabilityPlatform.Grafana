@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservabilityPlatform.Grafa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservabilityPlatform.Web", "ObservabilityPlatform.Web\ObservabilityPlatform.Web.csproj", "{A1028B1B-D343-4A61-99AE-551BD6882CEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservabilityPlatform.Rest", "ObservabilityPlatform.Rest\ObservabilityPlatform.Rest.csproj", "{FC4A239A-A1C0-4C70-8614-3562F5F86A15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1028B1B-D343-4A61-99AE-551BD6882CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4A239A-A1C0-4C70-8614-3562F5F86A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4A239A-A1C0-4C70-8614-3562F5F86A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4A239A-A1C0-4C70-8614-3562F5F86A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4A239A-A1C0-4C70-8614-3562F5F86A15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

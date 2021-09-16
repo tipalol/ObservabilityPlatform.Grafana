@@ -56,7 +56,8 @@
 
     private async Task<string> CreateDashboardFromTemplate()
     {
-        var template = DashboardTemplates.DashboardTemplate;
+        //var template = DashboardTemplates.DashboardTemplate;
+        var template = await File.ReadAllTextAsync("templates/dashboardTemplate.json");
         var builder = new DashboardBuilder(template);
 
         var dashboard = builder
